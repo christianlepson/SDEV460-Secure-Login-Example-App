@@ -1,0 +1,3 @@
+Welcome to the SDEV460 Login.
+
+This application is meant only for use by students and faculty of the SDEV460 course at UMUC. By using this application you agree that you are a student or faculty member of SDEV460. You also agree that any of your actions pertaining the application may be recorded, monitored, and/or audited.
