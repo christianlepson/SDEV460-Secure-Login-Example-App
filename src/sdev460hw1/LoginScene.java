@@ -62,9 +62,9 @@ public class LoginScene {
             if (loginIsValid()) {
                 Lockout.resetFailedAttempts();
                 Mailer.sendNewMultiFactorAuthCode();
-                MultiFactorScene.show(window);
+                MultiFactorScene.show(window, userTextField.getText());
             } else {
-                EventLogger.logFailedUserLoginAttempt();
+                EventLogger.logFailedUserLoginAttempt(userTextField.getText());
                 Lockout.incrementFailedAttempts();
 
                 boolean lockoutIsActive = Lockout.isLockoutActive();

@@ -26,12 +26,12 @@ public class EventLogger {
         log("Application stopped");
     }
 
-    public static void logSuccessfulUserLogin() {
-        log("Successful login attempt");
+    public static void logSuccessfulUserLogin(String username) {
+        log("Successful login for user: " + username);
     }
 
-    public static void logFailedUserLoginAttempt() {
-        log("Failed login attempt");
+    public static void logFailedUserLoginAttempt(String username) {
+        log("Failed login attempt for user: " + username);
     }
 
     private static void log (String message) {

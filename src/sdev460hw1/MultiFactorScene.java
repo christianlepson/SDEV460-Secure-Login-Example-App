@@ -27,7 +27,7 @@ public class MultiFactorScene {
      * the user's identity
      * @param window the Stage that will present the scene 
      */
-    public static void show(Stage window) {
+    public static void show(Stage window, String username) {
         grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -53,7 +53,7 @@ public class MultiFactorScene {
             String codeString = codeTextField.getText();
             boolean codeIsValid = MultiFactorAuthenticator.isValidAuthCode(codeString);
             if (codeIsValid) {
-                EventLogger.logSuccessfulUserLogin();
+                EventLogger.logSuccessfulUserLogin(username);
                 UserProfileScene.show(window);
             } else {
                 grid.getChildren().remove(authErrorText);
