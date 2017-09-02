@@ -1,3 +1,0 @@
-
-2017-09-1 04:44:03PM 1504298643128 - Application started
-2017-09-1 04:44:10PM 1504298650754 - Application stopped

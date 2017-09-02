@@ -55,10 +55,10 @@ public class LoginScene {
         pwBox = new PasswordField();
         grid.add(pwBox, 1, 2);
 
-        Button btn = new Button("Login");
-        grid.add(btn, 1, 4);
+        Button submitBtn = new Button("Submit");
+        grid.add(submitBtn, 1, 4);
 
-        btn.setOnAction(e -> {
+        submitBtn.setOnAction(e -> {
             if (loginIsValid()) {
                 Lockout.resetFailedAttempts();
                 Mailer.sendNewMultiFactorAuthCode();
@@ -80,6 +80,14 @@ public class LoginScene {
                     showUnsuccessfulLoginMessage();
                 }
             }
+        });
+
+        Button resetBtn = new Button("Reset");
+        grid.add(resetBtn, 0, 4);
+
+        resetBtn.setOnAction(e -> {
+            pwBox.clear();
+            userTextField.clear();
         });
 
         Scene scene = new Scene(grid, 575, 400);
