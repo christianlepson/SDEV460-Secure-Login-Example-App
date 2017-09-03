@@ -79,7 +79,9 @@ public class LoginScene {
      * @param window the stage containing the submit button
      */
     private static void submit(Stage window) {
-        if (loginIsValid()) {
+        String username = userTextField.getText();
+        String password = userTextField.getText();
+        if (Authenticator.loginIsValid(username, password)) {
             Lockout.resetFailedAttempts();
             Mailer.sendNewMultiFactorAuthCode();
             MultiFactorScene.show(window, userTextField.getText());
@@ -110,22 +112,7 @@ public class LoginScene {
         userTextField.clear();
     }
     
-    /**
-     * @return isValid true for valid login credentials
-     */
-    private static boolean loginIsValid() {
-        String user = userTextField.getText();
-        String password = pwBox.getText();
 
-        boolean isValid = false;
-        // User and password are hardcoded for this example app
-        if (user.equalsIgnoreCase("sdev460admin")
-                && password.equals("460!pass")) {
-            isValid = true;
-        }
-
-        return isValid;
-    }
     
     /**
      * Alerts the user that their login credentials are
