@@ -5,6 +5,8 @@ package sdev460hw1;
  */
 public class Authenticator {
 
+    private Authenticator() {}
+
     /**
      * @return isValid true for valid login credentials
      */
