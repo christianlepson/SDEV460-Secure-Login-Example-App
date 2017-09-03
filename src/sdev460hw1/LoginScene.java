@@ -59,40 +59,55 @@ public class LoginScene {
         grid.add(submitBtn, 1, 4);
 
         submitBtn.setOnAction(e -> {
-            if (loginIsValid()) {
-                Lockout.resetFailedAttempts();
-                Mailer.sendNewMultiFactorAuthCode();
-                MultiFactorScene.show(window, userTextField.getText());
-            } else {
-                EventLogger.logFailedUserLoginAttempt(userTextField.getText());
-                Lockout.incrementFailedAttempts();
-
-                boolean lockoutIsActive = Lockout.isLockoutActive();
-                boolean lockoutWaitTimeReached = Lockout.isLockoutWaitTimeReached();
-                if (lockoutIsActive) {
-                    grid.getChildren().remove(errorText);
-                    LockoutDialog.display();
-                } else if (lockoutWaitTimeReached) {
-                    Lockout.resetFailedAttempts();
-                    Lockout.incrementFailedAttempts();
-                    showUnsuccessfulLoginMessage();
-                } else {
-                    showUnsuccessfulLoginMessage();
-                }
-            }
+            submit(window);
         });
 
         Button resetBtn = new Button("Reset");
         grid.add(resetBtn, 0, 4);
 
         resetBtn.setOnAction(e -> {
-            pwBox.clear();
-            userTextField.clear();
+            resetTextFields();
         });
 
         Scene scene = new Scene(grid, 575, 400);
         window.setScene(scene);
         window.show();
+    }
+
+    /**
+     * Submits login credentials from username and password text fields
+     * @param window the stage containing the submit button
+     */
+    private static void submit(Stage window) {
+        if (loginIsValid()) {
+            Lockout.resetFailedAttempts();
+            Mailer.sendNewMultiFactorAuthCode();
+            MultiFactorScene.show(window, userTextField.getText());
+        } else {
+            EventLogger.logFailedUserLoginAttempt(userTextField.getText());
+            Lockout.incrementFailedAttempts();
+
+            boolean lockoutIsActive = Lockout.isLockoutActive();
+            boolean lockoutWaitTimeReached = Lockout.isLockoutWaitTimeReached();
+            if (lockoutIsActive) {
+                grid.getChildren().remove(errorText);
+                LockoutDialog.display();
+            } else if (lockoutWaitTimeReached) {
+                Lockout.resetFailedAttempts();
+                Lockout.incrementFailedAttempts();
+                showUnsuccessfulLoginMessage();
+            } else {
+                showUnsuccessfulLoginMessage();
+            }
+        }
+    }
+
+    /**
+     * Clears the username and password text fields
+     */
+    private static void resetTextFields() {
+        pwBox.clear();
+        userTextField.clear();
     }
     
     /**
