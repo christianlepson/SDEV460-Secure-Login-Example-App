@@ -43,7 +43,7 @@ public class LoginScene {
         Text sceneTitle = new Text("Welcome. Login to continue.");
         grid.add(sceneTitle, 0, 0, 2, 1);
 
-        Label userName = new Label("User Name:");
+        Label userName = new Label("Username:");
         grid.add(userName, 0, 1);
 
         userTextField = new TextField();
