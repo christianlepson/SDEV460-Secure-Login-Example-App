@@ -79,7 +79,7 @@ public class TermsDialog {
      * Retrieves the terms and conditions from the text file
      * @return the terms and conditions
      */
-    private static String getTermsAndConditions() {
+    protected static String getTermsAndConditions() {
         String terms = "";
         try {
             terms = new String(Files.readAllBytes(Paths.get("terms.txt")));
