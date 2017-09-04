@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class MultiFactorAuthenticatorTest {
 
     @Test
-    public void generateMultiFactorAuthCode() throws Exception {
+    public void multiFactorAuthCodeIsInRange() throws Exception {
 
         int generatedCode = MultiFactorAuthenticator.generateMultiFactorAuthCode();
 
