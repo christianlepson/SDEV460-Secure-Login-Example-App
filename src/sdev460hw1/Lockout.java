@@ -23,9 +23,6 @@ public class Lockout {
             TimeUnit.MINUTES.toMillis(LOCKOUT_TIME_IN_MINUTES);
     private static final String LOGIN_ATTEMPTS_FILE_NAME = "loginAttempts.txt";
 
-    private Lockout() {
-    }
-
     /**
      * Determines if the user is currently locked out
      * @return true if user is locked out, false if not
